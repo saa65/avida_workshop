@@ -1,0 +1,13 @@
+#!/bin/bash -login
+#PBS -l walltime=7:00:00
+#PBS -l mem=4096mb
+#PBS -N all_rewarded
+#PBS -t 6-10
+#PBS -M stacy.arnold@yale.edu
+
+cd ~/complex_features_experiment
+mkdir results/all_rewarded/${PBS_ARRAYID}
+cp configs/* results/all_rewarded/${PBS_ARRAYID}
+
+cd results/all_rewarded/${PBS_ARRAYID}
+./avida -set RANDOM_SEED ${PBS_ARRAYID}
